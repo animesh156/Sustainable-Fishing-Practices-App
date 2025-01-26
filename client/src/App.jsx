@@ -6,6 +6,8 @@ import Community from './pages/Community'
 import FishingImpact from './pages/FishingImpact'
 import SeaFoodGuide from './pages/SeaFoodGuide'
 import Features from './pages/Features'
+import MapGuide from './pages/MapGuide'
+import Gear from './pages/Gear'
 
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
       <Route path="/guide" element={<SeaFoodGuide />} />
       <Route path="/impact" element={<FishingImpact />} />
       <Route path="/feature" element={<Features />} />
+      <Route path="/map" element={<MapGuide />} />
+      <Route path="/gear" element={<Gear />} />
 
     </Routes>
 
