@@ -1,10 +1,18 @@
 import Balancer from 'react-wrap-balancer'
+import {motion} from 'framer-motion'
 
 function Article() {
+
+  const animationSettings = {
+    initial: { x: -200, opacity: 0 }, // Start off-screen to the left and invisible
+    animate: { x: 0, opacity: 1 },   // Move into view and become visible
+    transition: { type: 'spring', stiffness: 50 }, // Spring animation
+  };
+
   return (
     <>
 
-<article className="text-center p-4">
+<motion.article className="text-center p-4" {...animationSettings}>
 
 <p className="font-mono md:text-2xl text-sky-500 mt-8 mb-8">
   <Balancer>
@@ -38,7 +46,7 @@ Overfishing is the greatest threat to the biodiversity of the world’s oceans. 
 </div>
 
 
-</article>
+</motion.article>
 
     </>
   )
