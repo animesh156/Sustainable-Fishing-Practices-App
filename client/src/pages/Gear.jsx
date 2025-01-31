@@ -1,3 +1,5 @@
+import Balancer from 'react-wrap-balancer'
+
 const gears = [
   {
     name: "Biodegradable Nets",
@@ -54,39 +56,50 @@ const gears = [
 ];
 
 function Gear() {
-
-  return <>
-
-  <h1 className="text-center text-2xl mt-5 md:text-5xl font-bold">Eco-Friendly Fishing Gears</h1>
-
-
-     <div className="flex  mb-10 justify-evenly  gap-y-4 gap-x-8 flex-wrap mt-10">
-
-     {gears.map((gear,index) => (
-    <div 
-    key={index}
-    className="card bg-neutral-900 w-72 shadow-sm">
-    <figure>
-      <img
-      className="w-72 h-52 object-cover"
-        src={gear.image}
-        alt="Shoes" />
-    </figure>
-    <div className="card-body">
-      <h2 className="card-title">{gear.name}</h2>
-      <p>{gear.description}</p>
-      <div className="card-actions justify-center">
-       <a href={gear.shoppingUrl} target="_blank"><button className="btn btn-success">Buy Now</button></a> 
-       <a href={gear.about} target="_blank"><button className="btn btn-info">Learn More</button></a> 
+  return (
+    <>
+     
+     <h1 className='text-center text-sky-500  md:text-4xl mt-4 mb-7 text-xl font-extrabold'>Catch Responsibly: The Best Sustainable Fishing Gear</h1>
+      
+      <div className="text-center md:mt-20 mx-auto  px-4">
+        <h2 className="md:text-2xl text-xxl font-semibold text-yellow-500  mb-2">Why Choose Eco-Friendly Fishing Gears?</h2>
+        <p className="text-lg gear">
+          <Balancer>
+          Sustainable fishing practices are essential for preserving marine ecosystems and ensuring the long-term health of our oceans. Eco-friendly fishing gears, such as biodegradable nets, circle hooks, and turtle excluder devices, help reduce bycatch, minimize environmental impact, and protect endangered species. By choosing these innovative tools, we can enjoy fishing while contributing to the conservation of marine life.
+          </Balancer>
+         
+        </p>
       </div>
-    </div>
-  </div>
-  ))}
 
-     </div>
- 
-
-  </>;
+      <div className="flex mb-10 justify-evenly gap-y-4 gap-x-8 flex-wrap mt-10">
+        {gears.map((gear, index) => (
+          <div key={index} className="card bg-slate-50 dark:bg-neutral-900 w-80 hover:shadow-cyan-400 shadow-lg">
+            <figure>
+              <img
+                className="w-full h-52 object-cover"
+                src={gear.image}
+                alt={gear.name}
+              />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">{gear.name}</h2>
+              <p>{gear.description}</p>
+              <div className="card-actions justify-center">
+                <a href={gear.shoppingUrl} target="_blank" rel="noopener noreferrer">
+                  <button className="btn btn-success">Buy Now</button>
+                </a>
+                <a href={gear.about} target="_blank" rel="noopener noreferrer">
+                  <button className="btn btn-info">Learn More</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
+  );
 }
 
 export default Gear;
+
+

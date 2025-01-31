@@ -26,8 +26,8 @@ const features = [
   {
     title: 'Fishing Impact',
     description: 'Help users find local fishing regulations.',
-    image: 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp',
-    link: '/overfishing.jpg'
+    image: '/overfishing.jpg',
+    link: '/resource'
   },
 
 
@@ -54,7 +54,7 @@ function Features() {
   return (
     <>
 
-    <h1 className="md:text-5xl  bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 bg-clip-text text-transparent text-4xl md:mt-12 mt-8 text-center font-extrabold">Features</h1>
+    <h1 className="md:text-6xl  bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 bg-clip-text text-transparent text-4xl md:mt-8 mt-8 text-center font-extrabold">Features</h1>
 
 <div className="flex justify-evenly  mb-10 gap-x-5 gap-y-5 flex-wrap  mt-10">
 
@@ -64,7 +64,7 @@ function Features() {
      transition={{ ...animationSettings.transition, delay: 0.2 }} // Add delay for staggered effect
      key={index}
      onClick={() => navigate(feature.link)}
-      className="card bg-base-100 w-96 shadow-sm">
+      className="card bg-gray-200 dark:bg-neutral-900 w-80 md:w-96 hover:shadow-cyan-400 shadow-lg">
        <figure>
          <img
            src={feature.image}
@@ -73,10 +73,10 @@ function Features() {
             />
        </figure>
        <div className="card-body text-center">
-         <h2 className="text-lg font-semibold text-center">{feature.title}</h2>
+         <h2 className="text-2xl font-bold text-center">{feature.title}</h2>
          <p>{feature.description}</p>
          <div className="card-actions justify-center">
-           <button className="btn btn-primary">Know More</button>
+           <button className="btn btn-secondary">Know More</button>
          </div>
        </div>
      </motion.div>

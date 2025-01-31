@@ -91,45 +91,83 @@ function FishingImpact() {
 
   return (
     <>
-      <h1 className="text-center md:text-5xl text-pink-500 text-2xl mb-12 font-bold mt-5">
-        Discover Latest Articles & Videos
-      </h1>
-
-      <motion.div className="flex justify-evenly flex-wrap gap-y-6 mt-5 mb-5 gap-x-2 ">
-        {articles.map((article, index) => (
+    <h1 className="text-center md:text-5xl text-pink-500 text-2xl mb-12 font-bold mt-5">
+    Explore Resources on Sustainable Fishing
+    </h1>
+  
+    <div className="text-center mb-6">
+      <h2 className="text-2xl font-bold text-cyan-400">Informative Articles</h2>
+      <p className="dark:text-gray-400 italic">
+        Learn about the impact of overfishing and sustainable practices.
+      </p>
+    </div>
+    
+    <motion.div className="flex justify-evenly flex-wrap gap-y-6 mt-5 mb-5 gap-x-2 ">
+      {articles
+        .filter((article) => article.type === "Article")
+        .map((article, index) => (
           <motion.div
             key={index}
             {...animationSettings}
             transition={{
               ...animationSettings.transition,
-              delay: 0.6 + index * 0.1, // Stagger each card animation
+              delay: 0.6 + index * 0.1,
             }}
-            className="card bg-neutral-900 w-80 hover:shadow-lg hover:shadow-cyan-400"
+            className="card dark:bg-neutral-900 bg-gray-200 w-80 hover:shadow-lg hover:shadow-cyan-400"
           >
             <figure className="px-10 pt-10">
               <img src={article.image} alt="Shoes" className="rounded-xl" />
             </figure>
             <div className="card-body items-center text-center">
-              <h1 className="card-title font-bold">{article.title}</h1>
-              <p className="font-mono text-gray-400">{article.description}</p>
+              <h1 className="card-title font-bold text-sky-700">{article.title}</h1>
+              <p className="font-mono dark:text-gray-400">{article.description}</p>
               <div className="card-actions">
-                <a href={article.link}>
-                  <button
-                    className={`btn ${
-                      article.type === "Article"
-                        ? "btn-primary"
-                        : "btn-secondary"
-                    }`}
-                  >
-                    {article.type === "Article" ? "Learn More" : "Watch Now"}
-                  </button>
+                <a href={article.link} target="_blank" rel="noreferrer">
+                  <button className="btn btn-primary">Learn More</button>
                 </a>
               </div>
             </div>
           </motion.div>
         ))}
-      </motion.div>
-    </>
+    </motion.div>
+  
+    <div className="text-center mb-6">
+      <h2 className="text-2xl font-bold text-cyan-400">Engaging Videos</h2>
+      <p className="text-gray-400 italic">
+        Watch videos about overfishing and sustainable practices.
+      </p>
+    </div>
+  
+    <motion.div className="flex justify-evenly flex-wrap gap-y-6 mt-5 mb-5 gap-x-2 ">
+      {articles
+        .filter((article) => article.type === "Video")
+        .map((article, index) => (
+          <motion.div
+            key={index}
+            {...animationSettings}
+            transition={{
+              ...animationSettings.transition,
+              delay: 0.6 + index * 0.1,
+            }}
+            className="card bg-gray-200 dark:bg-neutral-900 w-80 hover:shadow-lg hover:shadow-cyan-400"
+          >
+            <figure className="px-10 pt-10">
+              <img src={article.image} alt="Shoes" className="rounded-xl" />
+            </figure>
+            <div className="card-body items-center text-center">
+              <h1 className="card-title font-bold text-sky-600">{article.title}</h1>
+              <p className="font-mono dark:text-gray-400">{article.description}</p>
+              <div className="card-actions">
+                <a href={article.link} target="_blank" rel="noreferrer">
+                  <button className="btn btn-secondary">Watch Now</button>
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+    </motion.div>
+  </>
+  
   );
 }
 

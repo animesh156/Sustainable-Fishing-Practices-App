@@ -1,92 +1,82 @@
-import { useState } from "react";
-
-const seafoodData = [
-  {
-    name: "Atlantic Salmon",
-    sustainability: "Avoid",
-    method: "Farmed (open net pens)",
-    season: "Year-round",
-    image: "/atlantic_salmon.jpeg",
-  },
-  {
-    name: "Pacific Sardines",
-    sustainability: "Best Choice",
-    method: "Wild-caught (purse seines)",
-    season: "Spring-Summer",
-    image: "/fish.jpg",
-  },
-  {
-    name: "Shrimp (Imported)",
-    sustainability: "Avoid",
-    method: "Farmed",
-    season: "Year-round",
-    image: "/shrimp.jpg",
-  },
-  {
-    name: "Albacore Tuna",
-    sustainability: "Good Alternative",
-    method: "Pole-and-line caught",
-    season: "Summer-Fall",
-    image: "/tuna.jpg",
-  },
-];
+import { useEffect, useState } from "react";
+import axios from 'axios';
 
  function SeafoodGuide() {
-  const [search, setSearch] = useState("");
 
-  const filteredSeafood = seafoodData.filter((item) =>
-    item.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const [fishData, setFishData] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(
+          "https://fish-species.p.rapidapi.com/fish_api/fishes",
+          {
+            headers: {
+              "x-rapidapi-key": import.meta.env.VITE_API_KEY, // Ensure your API key is correctly set in .env
+              "x-rapidapi-host": "fish-species.p.rapidapi.com",
+            },
+          }
+        );
+
+        // Limit the data to 30 fish items
+        const limitedData = response.data.slice(0, 30);
+        console.log(limitedData)
+        setFishData(limitedData);
+      } catch (error) {
+        console.error("Error fetching fish data:", error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  
+
+
+
+
+ 
 
   return (
-    <section className=" py-16 px-6">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-8">Seafood Guide</h2>
-        <p className="text-lg text-center text-gray-600 mb-12">
-          Discover sustainable seafood options to make eco-friendly choices.
-        </p>
-        <div className="mb-8 text-center">
-          <input
-            type="text"
-            placeholder="Search for seafood..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="border border-gray-300 rounded-lg p-2 w-64"
-          />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {filteredSeafood.map((seafood, index) => (
-            <div
-              key={index}
-              className={` text-sky-500 rounded-2xl shadow-md p-6 text-center ${
-                seafood.sustainability === "Avoid"
-                  ? "border-red-500 border-2"
-                  : seafood.sustainability === "Best Choice"
-                  ? "border-green-500 border-2"
-                  : "border-yellow-500 border-2"
-              }`}
-            >
-              <img
-                src={seafood.image}
-                alt={seafood.name}
-                className="w-full h-40 object-cover rounded-lg mb-4"
-              />
-              <h3 className="text-xl font-bold mb-2">{seafood.name}</h3>
-              <p className=" mb-2 text-fuchsia-500">
-                Sustainability:{" "}
-                <span className="font-semibold">{seafood.sustainability}</span>
-              </p>
-              <p className="text-amber-500 mb-2">
-                Method: {seafood.method}
-              </p>
-              <p className="text-emerald-500">Season: {seafood.season}</p>
-            </div>
-          ))}
-        </div>
+  <>
+  
+
+      <h1 className="md:text-4xl text-2xl mt-3 font-bold text-center mb-8 text-blue-800">
+        Sustainable Seafood Guide
+      </h1>
+      <p className="md:text-2xl text-center  font-bold mb-8">
+  Discover sustainable seafood choices for a healthier ocean.
+</p>
+      <div className="flex flex-wrap justify-center gap-y-4 gap-x-4">
+        {fishData.map((fish) => (
+         <div key={fish.id} className="card bg-gray-300 dark:bg-neutral-900 w-96 shadow-sm">
+         <figure>
+         <img
+                     src={fish.img_src_set?.["1.5x"] || "/cod.jpeg"}
+                     alt={fish.meta?.name || "Fish Image"}
+                     className="w-full h-48 object-cover rounded-lg mb-4"
+                   />
+         </figure>
+         <div className="card-body">
+           <h2 className="card-title"> {fish.name || "Unknown Fish"}</h2>
+           <p> Family: {fish.meta.scientific_classification?.family || "N/A"}</p>
+          <p>Domain: {fish.meta.scientific_classification?.domain || "N/A"}</p>
+          <p> Kingdom: {fish.meta.scientific_classification?.kingdom || "N/A"}</p>  
+           <div className="card-actions justify-end">
+           <a href={fish.url}><button className="btn btn-primary">Learn More</button></a>  
+           </div>
+         </div>
+       </div>
+       
+        ))}
       </div>
-    </section>
+   
+
+
+  </>
   );
 }
+
 
 
 export default SeafoodGuide;

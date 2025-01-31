@@ -8,6 +8,7 @@ import SeaFoodGuide from './pages/SeaFoodGuide'
 import Features from './pages/Features'
 import MapGuide from './pages/MapGuide'
 import Gear from './pages/Gear'
+import ScrollToTop from './Components/ScrollToTop'
 
 
 function App() {
@@ -17,13 +18,13 @@ function App() {
     <>
 
    <Router>
-
-
+      
+            <ScrollToTop />
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/community" element={<Community />} />
       <Route path="/guide" element={<SeaFoodGuide />} />
-      <Route path="/impact" element={<FishingImpact />} />
+      <Route path="/resource" element={<FishingImpact />} />
       <Route path="/feature" element={<Features />} />
       <Route path="/map" element={<MapGuide />} />
       <Route path="/gear" element={<Gear />} />

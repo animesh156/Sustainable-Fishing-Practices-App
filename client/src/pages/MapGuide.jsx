@@ -187,8 +187,8 @@ const fishIcon = new L.Icon({
   return (
     <section className=" py-16 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="md:text-4xl text-3xl font-bold text-center mb-8">Fish Map Guide</h2>
-        <p className="text-lg text-center text-sky-400 mb-12">
+        <h2 className="md:text-5xl text-3xl font-extrabold text-center mb-8">Fish Map Guide</h2>
+        <p className="text-lg text-center font-semibold text-sky-400 mb-12">
           Explore where different fish species are found and learn about their
           sustainability.
         </p>
@@ -198,7 +198,7 @@ const fishIcon = new L.Icon({
             placeholder="Search for fish..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border border-gray-300 rounded-lg p-2 w-64"
+            className="border border-gray-300 bg-neutral-800 rounded-lg p-2 w-64"
           />
         </div>
 
