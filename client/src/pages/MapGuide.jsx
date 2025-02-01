@@ -198,7 +198,7 @@ const fishIcon = new L.Icon({
             placeholder="Search for fish..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border border-gray-300 bg-neutral-800 rounded-lg p-2 w-64"
+            className="border border-gray-300  rounded-lg p-2 w-64"
           />
         </div>
 
