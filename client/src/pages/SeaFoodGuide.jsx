@@ -3,6 +3,7 @@ import axios from "axios";
 
 function SeafoodGuide() {
   const [fishData, setFishData] = useState([]);
+  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
     async function fetchData() {
@@ -11,13 +12,21 @@ function SeafoodGuide() {
 
         // Limit the data to 80 fish items
         setFishData(response.data);
+        setLoading(false)
       } catch (error) {
         console.error("Error fetching fish data:", error);
+        setLoading(false)
       }
     }
 
     fetchData();
   }, []);
+
+  if(isLoading){
+    return  <div className="flex justify-center items-center h-96">
+    <div className="loader border-t-4 border-blue-500 border-solid rounded-full w-16 h-16 animate-spin"></div>
+  </div>
+  }
 
   return (
     <>
