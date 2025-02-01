@@ -8,7 +8,7 @@ function SeafoodGuide() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("http://localhost:6245/api/fish");
+        const response = await axios.get("https://sustainable-fishing-practices-app-backend.vercel.app/api/fish");
 
         // Limit the data to 80 fish items
         setFishData(response.data);
