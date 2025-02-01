@@ -58,10 +58,10 @@ function Community() {
           <h2 className="text-3xl font-bold mb-6">Upcoming Fishing Events</h2>
           <div className="space-y-6">
             {communityData.events.map((event, index) => (
-              <div key={index} className="bg-neutral-900 p-6 rounded-lg shadow-md">
+              <div key={index} className="dark:bg-neutral-900 bg-sky-100 p-6 rounded-lg shadow-md">
                 <h3 className="text-xl text-pink-500 font-semibold">{event.name}</h3>
-                <p className="text-sm text-yellow-400">{event.date} - {event.location}</p>
-                <p className="mt-2 text-gray-300">{event.description}</p>
+                <p className="text-sm dark:text-yellow-500 text-green-500">{event.date} - {event.location}</p>
+                <p className="mt-2 dark:text-gray-300">{event.description}</p>
                 <a href={event.link} target="_blank" rel="noopener noreferrer">
                   <button className="mt-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
                     Register Now
@@ -77,9 +77,9 @@ function Community() {
           <h2 className="text-3xl font-bold mb-6">Join Our Social Media Groups</h2>
           <div className="space-y-6">
             {communityData.socialMediaGroups.map((group, index) => (
-              <div key={index} className="bg-neutral-900 p-6 rounded-lg shadow-md">
+              <div key={index} className="dark:bg-neutral-900 bg-sky-100 p-6 rounded-lg shadow-md">
                 <h3 className="text-xl text-rose-500 font-semibold">{group.name}</h3>
-                <p className="text-sm text-gray-300">{group.description}</p>
+                <p className="text-sm dark:text-gray-300">{group.description}</p>
                 <a href={group.link} target="_blank" rel="noopener noreferrer">
                   <button className="mt-4 bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700">
                     Join Now
