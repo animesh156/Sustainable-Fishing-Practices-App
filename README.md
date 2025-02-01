@@ -45,6 +45,13 @@ This app is built using the MERN stack (MongoDB, Express.js, React.js, Node.js) 
 - **Cors**: For enabling Cross-Origin Resource Sharing in development.
 - **dotenv**: For handling environment variables.
 
+
+![Screenshot (209)](https://github.com/user-attachments/assets/9e93744a-02ab-41f8-97ff-f208f7ed0fd7)
+![Screenshot (208)](https://github.com/user-attachments/assets/f6a59654-be56-48b6-b3aa-2dcfeb208489)
+
+
+
+
 ## Installation
 
 1. Clone the repository
